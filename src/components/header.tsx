@@ -76,7 +76,7 @@ export default function Header() {
           ))}
           <Button
             variant="outline"
-            className="w-full hover:cursor-pointer border-black"
+            className="w-full mt-4 hover:cursor-pointer border-black"
             onClick={logout}
           >
           Sign Out
