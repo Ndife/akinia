@@ -74,22 +74,22 @@ export type Database = {
           stage?: string | null
           valuation_m?: number | null
         }
-        Relationships: []
-      }
-      company_tags: {
-        Row: {
-          company_id: string
-          tag_id: string
-        }
-        Insert: {
-          company_id: string
-          tag_id: string
-        }
-        Update: {
-          company_id?: string
-          tag_id?: string
-        }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "fk_companies_ceo_contact_id"
+            columns: ["ceo_contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_companies_primary_investor_id"
+            columns: ["primary_investor_id"]
+            isOneToOne: false
+            referencedRelation: "investors"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       contacts: {
         Row: {
@@ -116,7 +116,22 @@ export type Database = {
           name?: string
           role?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "fk_contacts_company_id"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_contacts_investor_id"
+            columns: ["investor_id"]
+            isOneToOne: false
+            referencedRelation: "investors"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       investors: {
         Row: {
@@ -152,20 +167,43 @@ export type Database = {
           portfolio_companies?: string[] | null
           type?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "fk_investors_managing_partner_id"
+            columns: ["managing_partner_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+        ]
       }
-      tags: {
+      news: {
         Row: {
+          date: string
           id: string
-          name: string
+          related_company_id: string[] | null
+          related_fund_id: string[] | null
+          sector: string | null
+          source: string | null
+          title: string
         }
         Insert: {
-          id?: string
-          name: string
+          date: string
+          id: string
+          related_company_id?: string[] | null
+          related_fund_id?: string[] | null
+          sector?: string | null
+          source?: string | null
+          title: string
         }
         Update: {
+          date?: string
           id?: string
-          name?: string
+          related_company_id?: string[] | null
+          related_fund_id?: string[] | null
+          sector?: string | null
+          source?: string | null
+          title?: string
         }
         Relationships: []
       }

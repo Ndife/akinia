@@ -1,20 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from './supabaseClient';
-
+import { supabase } from '@/app/lib/supabaseClient';
 
 interface Filters {
   sector?: string;
   country?: string;
 }
 
-export const useCompanies = (filters: Filters) => {
+export const useNews = (filters: Filters) => {
   return useQuery({
-    queryKey: ['companies', filters],
+    queryKey: ['news', filters],
     queryFn: async () => {
-      let query = supabase.from('companies').select('*');
+      let query = supabase.from('news').select('*');
       if (filters?.sector) query = query.eq('sector', filters.sector);
       if (filters?.country) query = query.eq('country', filters.country);
       return (await query).data;
     }
   });
-};
+}
