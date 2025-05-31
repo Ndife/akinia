@@ -104,7 +104,7 @@ export default function Header() {
 
           {/* Hamburger icon */}
           <div className={cn("md:hidden flex items-center")}>
-            <button onClick={() => setMenuOpen(true)} className="text-gray-800">
+            <button onClick={() => setMenuOpen(true)} className="text-gray-800 px-5">
               <Menu size={24} />
             </button>
           </div>

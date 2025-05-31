@@ -49,9 +49,9 @@ export default function CompanyPage() {
         </div>
       </div>
 
-      <div className="flex justify-between items-center p-y-0">
-        <div className="flex gap-4">
-          {/* Comapny HQ */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 items-center py-0">
+        <div className="flex flex-wrap gap-4">
+          {/* Company HQ */}
           <Dropdown
             items={initialCompanyData ?? []}
             selected={selectedHQ}
@@ -60,9 +60,9 @@ export default function CompanyPage() {
               setSelectedHQ(company.hq_location || "Unknown Location")
             }
             getLabel={(company) => company.hq_location || "Unknown Location"}
-            />
+          />
 
-          {/* Comapny Sector */}
+          {/* Company Sector */}
           <Dropdown
             items={initialCompanyData ?? []}
             selected={selectedSector}
@@ -84,12 +84,16 @@ export default function CompanyPage() {
             getLabel={(company) => company.stage}
           />
         </div>
-        <Button variant="link" className="hover:cursor-pointer p-0 hover:-underline text-muted-foreground" 
+
+        <Button
+          variant="link"
+          className="justify-self-end hover:cursor-pointer p-0 hover:underline text-muted-foreground"
           onClick={() => {}}
         >
           Clear
         </Button>
       </div>
+
 
       <CompanyTable selectedCompany={selectedCompany} isLoading={isLoading} />
     </div>
