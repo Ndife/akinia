@@ -67,6 +67,9 @@ export default function Header() {
 
   const authenticatedLinks = (
     <>
+      <div className='flex justify-center md:justify-start'>
+        <UserDropdown />
+     </div>
       <div className="block md:hidden">
           {dashboardNav.map((item) => (
             <NavItem key={item.label} {...item} />
@@ -79,9 +82,6 @@ export default function Header() {
           Sign Out
         </Button>
       </div>
-      <div className='flex justify-center md:justify-start'>
-        <UserDropdown />
-     </div>
     </>
   );
 

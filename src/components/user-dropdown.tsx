@@ -37,7 +37,7 @@ export const UserDropdown = () => {
           <span className="text-sm font-bold">{initials}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className='border-none'>
+      <DropdownMenuContent align="end" className='border-none hidden md:block'>
         <DropdownMenuItem asChild>
           <a href="/profile" className="flex items-center space-x-0.1 hover:cursor-pointer hover:bg-transparent! hover:text-blue-600!">
             <UserIcon className="w-4 h-4 text-gray-500" />
