@@ -1,4 +1,4 @@
-import type { NavItemProps } from "@/components/nav-item";
+import type { NavItemProps } from "@/components/nav-item";;
 
 export const dashboardNav: NavItemProps[] = [
   {
@@ -15,5 +15,20 @@ export const dashboardNav: NavItemProps[] = [
     label: "Investors",
     href: "/investors",
     iconName: "briefcaseBusiness",
+  },
+];
+
+export const dashboardUnAuthenticated: NavItemProps[] = [
+  {
+    label: "Features",
+    href: "/",
+  },
+  {
+    label: "Pricing",
+    href: "/",
+  },
+  {
+    label: "About Us",
+    href: "/",
   },
 ];

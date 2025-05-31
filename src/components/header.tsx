@@ -10,6 +10,9 @@ import { useAuth } from '../app/lib/AuthProvider';
 import { UserDropdown } from './user-dropdown';
 import { cn } from '@/lib/utils';
 import SearchInput from './search-input';
+import NavItem from './nav-item';
+import { dashboardUnAuthenticated, dashboardNav } from '@/app/lib/navigation';
+import { logout } from '@/app/lib/authHelpers';
 
 export default function Header() {
   const router = useRouter();
@@ -27,7 +30,11 @@ export default function Header() {
 
   const unauthenticatedLinks = (
     <>
-      <Link href="/" className="text-gray-700 hover:text-amber-950 text-sm font-medium">
+      {dashboardUnAuthenticated.map((item) => (
+        <NavItem key={item.label} {...item} />
+      ))}
+
+      {/* <Link href="/" className="text-gray-700 hover:text-amber-950 text-sm font-medium">
         Features
       </Link>
       <Link href="/" className="text-gray-700 hover:text-amber-950 text-sm font-medium">
@@ -35,7 +42,7 @@ export default function Header() {
       </Link>
       <Link href="/" className="text-gray-700 hover:text-amber-950 text-sm font-medium">
         About Us
-      </Link>
+      </Link> */}
       <Button
         variant="outline"
         className="hover:cursor-pointer border-black"
@@ -60,10 +67,21 @@ export default function Header() {
 
   const authenticatedLinks = (
     <>
-      <Link href="/dashboard" className="hover:text-amber-950 text-sm font-medium">
-        Dashboard
-      </Link>
-       <UserDropdown />
+      <div className="block md:hidden">
+          {dashboardNav.map((item) => (
+            <NavItem key={item.label} {...item} />
+          ))}
+          <Button
+            variant="outline"
+            className="w-full hover:cursor-pointer border-black"
+            onClick={logout}
+          >
+          Sign Out
+        </Button>
+      </div>
+      <div className='flex justify-center md:justify-start'>
+        <UserDropdown />
+     </div>
     </>
   );
 
