@@ -34,7 +34,7 @@ export default function CompanyPage() {
    },[data]);
 
   return (
-    <div className="flex flex-col gap-4 p-6">
+    <div className="flex flex-col gap-4">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Companies</h1>
         <div className="flex gap-4">
@@ -49,7 +49,7 @@ export default function CompanyPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 items-center py-0">
+      <div className="flex flex-wrap justify-between items-center p-y-0">
         <div className="flex flex-wrap gap-4">
           {/* Company HQ */}
           <Dropdown
