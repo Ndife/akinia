@@ -12,7 +12,7 @@ export default function SideNavLayout({ children }: { children: React.ReactNode 
           ))}
         </nav>
       </aside>
-      <main className="flex-1 w-[100%] md:w-[82%] px-4 xs:px-0">{children}</main>
+      <main className="flex-1 w-[100%] md:w-[82%] px-4 xs:px-0 py-4">{children}</main>
     </div>
   );
 }
