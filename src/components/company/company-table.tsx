@@ -1,5 +1,5 @@
 import { DataTable, Column } from "@/components/table";
-import TableLoader from "../table-loader";
+import TableLoader from "../loaders/table";
 import { CompanyWithCEO } from "@/app/companies/page";
 
 interface ICompanyTable {
