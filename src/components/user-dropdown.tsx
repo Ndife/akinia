@@ -10,15 +10,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Power, User as UserIcon } from 'lucide-react';
-
-function getInitials(fullName: string) {
-  const names = fullName.trim().split(' ');
-  const initials =
-    names.length === 1
-      ? names[0].slice(0, 2)
-      : names[0][0] + names[names.length - 1][0];
-  return initials.toUpperCase();
-}
+import { getInitials } from '@/helper';
 
 export const UserDropdown = () => {
   const { session } = useAuth();

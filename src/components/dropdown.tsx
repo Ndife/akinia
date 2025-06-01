@@ -1,6 +1,12 @@
 "use client";
 
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
@@ -34,8 +40,8 @@ export function Dropdown<T>({
   }
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger asChild>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
         <button
           className={cn(
             "flex items-center gap-1 text-xs bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200 focus:outline-none",
@@ -45,20 +51,20 @@ export function Dropdown<T>({
           <span>{selected || placeholder}</span>
           <ChevronDown className="w-4 h-4" />
         </button>
-      </DropdownMenu.Trigger>
+      </DropdownMenuTrigger>
 
-      <DropdownMenu.Content className="bg-white shadow rounded-md py-1 max-h-40 overflow-y-auto z-50">
-        <DropdownMenu.Separator className="h-px my-1 bg-gray-200" />
+      <DropdownMenuContent className="bg-white shadow rounded-md py-1 max-h-40 overflow-y-auto z-50">
+        <DropdownMenuSeparator className="h-px my-1 bg-gray-200" />
         {uniqueItems.map((item, idx) => (
-          <DropdownMenu.Item
+          <DropdownMenuItem
             key={idx}
             onSelect={() => onSelect(item)}
             className="px-3 py-1.5 text-sm text-muted-foreground cursor-pointer hover:bg-gray-100"
           >
             {getLabel(item)}
-          </DropdownMenu.Item>
+          </DropdownMenuItem>
         ))}
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
